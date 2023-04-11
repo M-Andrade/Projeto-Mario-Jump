@@ -48,6 +48,15 @@ body{
     margin: -25px 0 0 -25px;
 }
 
+.star{
+    display: none;
+    position: absolute;
+    width: 125px;
+    top: 80%;
+    left: 46%;
+    margin: -25px 0 0 -25px;
+}
+
 @keyframes pipe-animation {
     from{
         right: -80px;
