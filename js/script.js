@@ -7,6 +7,7 @@ const star = document.querySelector('.star');
 const elemento = document.getElementById("id-pipe");
 const points = document.getElementById("pontos");
 const telaLargura = window.innerWidth;
+let morto = true;
 
 
 function playJump() {
@@ -27,13 +28,18 @@ let time = 1500;
 let valorAtual = 00000;
 
 const jump = () => {
-    mario.classList.add('jump');
-    playJump()
+    if(morto){
+        mario.classList.add('jump');
+        playJump()
 
-    setTimeout(() => {
-        mario.classList.remove('jump')
-        valorAtual += 3;
-    },500);
+        setTimeout(() => {
+            mario.classList.remove('jump')
+            valorAtual += 3;
+        },500);
+    }else{
+        location.reload();
+        morto = true;
+    }
 }
 
 const loop = setInterval(() => {
@@ -43,28 +49,31 @@ const loop = setInterval(() => {
 
     if (pipePosition <= 120 &&pipePosition > 0 && marioPosition < 80) {
 
-        pipe.style.animation = 'none';
-        pipe.style.left = `${pipePosition}px`;
-        
-        mario.classList.add('mario-died-anim')
-        mario.style.bottom = `-250px`;
+        if(morto){
+            pipe.style.animation = 'none';
+            pipe.style.left = `${pipePosition}px`;
+            
+            mario.classList.add('mario-died-anim')
+            mario.style.bottom = `-250px`;
 
-        mario.src = 'images/game-over.png';
-        mario.style.width = '75px';
-        mario.style.marginLeft = '50px';
+            mario.src = 'images/game-over.png';
+            mario.style.width = '75px';
+            mario.style.marginLeft = '50px';
 
-        gameOver.style.display = 'block';
+            gameOver.style.display = 'block';
 
 
-        playDied()
-        clearInterval(loop);
-        clearInterval(loopTime);
-        clearInterval(loopPoints);
-        setTimeout(() => {
+            playDied()
+            clearInterval(loop);
+            clearInterval(loopTime);
+            clearInterval(loopPoints);
+            setTimeout(() => {
 
-            star.style.display = 'block';
+                star.style.display = 'block';
 
-        },1500);
+            },1500);
+            morto = false;
+        }
     }
 }, 10)
 
@@ -100,8 +109,8 @@ const meuBotao = document.getElementById("btn-star");
 
 meuBotao.addEventListener("click", function() {
     location.reload();
+    morto = true;
 });
 
-/*const jogo = setInterval(() => {*/
 document.addEventListener('keydown', jump);
 document.addEventListener('touchstart', jump);
