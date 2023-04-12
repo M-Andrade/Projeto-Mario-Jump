@@ -6,6 +6,7 @@ const star = document.querySelector('.star');
 
 const elemento = document.getElementById("id-pipe");
 const points = document.getElementById("pontos");
+const pointsForm = document.getElementById("pontos-envio")
 const telaLargura = window.innerWidth;
 let morto = true;
 
@@ -37,7 +38,7 @@ const jump = () => {
             valorAtual += 3;
         },500);
     }else{
-        location.reload();
+        /*location.reload();*/
         morto = true;
     }
 }
@@ -87,6 +88,8 @@ const loopTime = setInterval(() => {
 const loopPoints = setInterval(() => {
     valorAtual += 1;
     points.innerHTML = valorAtual;
+    pointsForm.innerHTML = valorAtual;
+    document.getElementById("pontuacao").value = points.innerHTML;
 }, 500)
 
 function atingiuBordaDireita() {

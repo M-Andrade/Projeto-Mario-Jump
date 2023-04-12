@@ -27,8 +27,18 @@
         <audio id="mario-died">
             <source src="sounds/mariodie.wav" type="audio/mpeg">
         </audio>
-        
 
+        <div class="score-board">
+            <form method="post" action="php/pontuacao.php">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome"><br>
+                <label for="pontuacao">Score:</label>&nbsp;
+                <p id="pontos-envio"></p>
+                <input type="hidden" id="pontuacao" name="pontuacao" value="">
+                <input class="btn-submit" type="submit" value="Enviar">
+            </form>
+        </div>
     </body>
+
     <script src="js/script.js"></script>
 </html>
