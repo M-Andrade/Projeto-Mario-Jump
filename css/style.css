@@ -4,16 +4,23 @@
     box-sizing: border-box;
 }
 body{
-    background: linear-gradient(#00640c, #e0f6ff);
+    background-image: linear-gradient(to bottom, #8c3c03 50%, #be6d11 50%),
+    linear-gradient(to right, #be6d11 50%, #8c3c03 50%);
+  background-size: 5px 5px;
 }
 
 .game-board{
     width: 100%;
-    height: 500px;
+    height: 800px;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(#87ceeb, #e0f6ff);
+    background-color: #0b88ff;
+    background-image: url(/images/fundo.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: bottom;
 }
 
 .pipe{
@@ -30,6 +37,10 @@ body{
     position: absolute;
     width: 150px;
     bottom: 0px;
+}
+
+.mario-died-anim{
+    animation: died 2s linear;
 }
 
 .jump{
@@ -85,6 +96,24 @@ body{
 
 }
 
+@keyframes died {
+    0%{
+        bottom: 50px;
+    }
+    40%{
+        bottom: 80px;
+    }
+    50%{
+        bottom: 70px;
+    }
+    60%{
+        bottom: 90px;
+    } 
+    100%{
+        bottom: -200px;
+    }
+}
+
 @keyframes jump {
     0%{
         bottom: 0;
@@ -101,6 +130,17 @@ body{
     100%{
         bottom: 0;
     }
+}
+
+@keyframes fundo-animation {
+    from{
+        right: 0px;
+    }
+
+    to{
+        right: 100%;
+    }
+
 }
 
 @keyframes clouds-animation {

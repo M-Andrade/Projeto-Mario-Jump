@@ -8,11 +8,27 @@ const elemento = document.getElementById("id-pipe");
 const points = document.getElementById("pontos");
 const telaLargura = window.innerWidth;
 
+
+function playJump() {
+    var audio = document.getElementById("mario-jump");
+    audio.volume = 0.15;
+    audio.currentTime = 0;
+    audio.play();
+}
+
+function playDied() {
+    var audio = document.getElementById("mario-died");
+    audio.volume = 0.25;
+    audio.currentTime = 0;
+    audio.play();
+}
+
 let time = 1500;
 let valorAtual = 00000;
 
 const jump = () => {
     mario.classList.add('jump');
+    playJump()
 
     setTimeout(() => {
         mario.classList.remove('jump')
@@ -29,9 +45,9 @@ const loop = setInterval(() => {
 
         pipe.style.animation = 'none';
         pipe.style.left = `${pipePosition}px`;
-
-        mario.style.animation = 'none';
-        mario.style.bottom = `${marioPosition}px`;
+        
+        mario.classList.add('mario-died-anim')
+        mario.style.bottom = `-250px`;
 
         mario.src = 'images/game-over.png';
         mario.style.width = '75px';
@@ -39,11 +55,16 @@ const loop = setInterval(() => {
 
         gameOver.style.display = 'block';
 
-        star.style.display = 'block',
 
+        playDied()
         clearInterval(loop);
         clearInterval(loopTime);
         clearInterval(loopPoints);
+        setTimeout(() => {
+
+            star.style.display = 'block';
+
+        },1500);
     }
 }, 10)
 
