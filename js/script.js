@@ -79,8 +79,8 @@ const loop = setInterval(() => {
 
 const loopTime = setInterval(() => {
     time -= 25;
-    if(time <= 600){
-        time = 350
+    if(time <= 450){
+        time = 450
     }
 }, 1000)
 
@@ -101,7 +101,6 @@ cano.addEventListener('animationend', () => {
     setTimeout(() => {
         pipe.classList.add('pipe-animation');
         pipe.style.setProperty('animation-duration', `${time}ms`);
-        console.log(time)
     }, 1)
 });
 
