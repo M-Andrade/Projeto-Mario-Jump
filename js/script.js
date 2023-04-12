@@ -17,7 +17,7 @@ const jump = () => {
     setTimeout(() => {
         mario.classList.remove('jump')
         valorAtual += 3;
-    }, 600);
+    },500);
 }
 
 const loop = setInterval(() => {
@@ -42,13 +42,16 @@ const loop = setInterval(() => {
         star.style.display = 'block',
 
         clearInterval(loop);
-        clearInterval(loopDif);
         clearInterval(loopTime);
+        clearInterval(loopPoints);
     }
 }, 10)
 
 const loopTime = setInterval(() => {
-    time -= 20;
+    time -= 25;
+    if(time <= 600){
+        time = 600
+    }
 }, 1000)
 
 const loopPoints = setInterval(() => {
@@ -60,14 +63,17 @@ function atingiuBordaDireita() {
     return (elemento.offsetLeft + elemento.offsetWidth) >= telaLargura;
 }
   
+const cano = document.querySelector('#id-pipe');
+pipe.classList.add('pipe-animation');
 
-const loopDif = setInterval(() => {
-    if (time >= 1000) {
-        if (atingiuBordaDireita()) {
-            pipe.style.animation = 'pipe-animation '+time+'ms infinite linear';
-        }
-    }
-}, 10)
+cano.addEventListener('animationend', () => {
+    pipe.classList.remove('pipe-animation');
+    setTimeout(() => {
+        pipe.classList.add('pipe-animation');
+        pipe.style.setProperty('animation-duration', `${time}ms`);
+        console.log(time)
+    }, 1)
+});
 
 const meuBotao = document.getElementById("btn-star");
 
@@ -76,3 +82,4 @@ meuBotao.addEventListener("click", function() {
 });
 
 document.addEventListener('keydown', jump);
+document.addEventListener('touchstart', jump);
