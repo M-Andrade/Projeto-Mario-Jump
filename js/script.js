@@ -35,13 +35,20 @@ const loop = setInterval(() => {
         star.style.display = 'block',
 
         clearInterval(loop);
-    } /*else{ 
-        setTimeout(() => {
-            time -= 5;
-            console.log(`Valor atual: ${time}`);
-            pipe.style.animation = 'pipe-animation '+time+'ms infinite linear';
-        }, 1000)
-    }*/
+        clearInterval(loopDif);
+    }
+}, 10)
+
+const loopTime = setInterval(() => {
+    time -= 20;
+}, 1000)
+
+const loopDif = setInterval(() => {
+    const pipePosition = pipe.offsetLeft;
+    if (pipePosition <= 0 && time >= 1100) {       
+        console.log(`Valor atual: ${time}`);
+        pipe.style.animation = 'pipe-animation '+time+'ms infinite linear';
+    }
 }, 10)
 
 const meuBotao = document.getElementById("btn-star");
