@@ -3,6 +3,10 @@ const pipe = document.querySelector('.pipe');
 const clouds = document.querySelector('.clouds');
 const gameOver = document.querySelector('.game-over');
 const star = document.querySelector('.star');
+
+const elemento = document.getElementById("id-pipe");
+const telaLargura = window.innerWidth;
+
 let time = 1500;
 
 const jump = () => {
@@ -43,11 +47,16 @@ const loopTime = setInterval(() => {
     time -= 20;
 }, 1000)
 
+function atingiuBordaDireita() {
+    return (elemento.offsetLeft + elemento.offsetWidth) >= telaLargura;
+}
+  
+
 const loopDif = setInterval(() => {
-    const pipePosition = pipe.offsetLeft;
-    if (pipePosition <= 0 && time >= 1100) {       
-        console.log(`Valor atual: ${time}`);
-        pipe.style.animation = 'pipe-animation '+time+'ms infinite linear';
+    if (time >= 1000) {
+        if (atingiuBordaDireita()) {
+            pipe.style.animation = 'pipe-animation '+time+'ms infinite linear';
+        }
     }
 }, 10)
 
