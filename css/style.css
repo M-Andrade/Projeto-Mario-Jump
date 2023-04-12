@@ -44,33 +44,35 @@ body{
 
 .game-over{
     display: none;
-    width: 250px;
     position: absolute;
-    top: 42.5%;
-    left: 42.5%;
-    margin: -25px 0 0 -25px;
+    width: 250px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.star{
+.star {
     display: none;
     position: absolute;
     width: 125px;
+    left: 50%;
     top: 80%;
-    left: 46%;
-    margin: -25px 0 0 -25px;
-}
+    transform: translate(-50%, -50%);
+  }
 .score{
     font-family: 'Courier New', Courier, monospace;
     font-size: 25px;
     font-weight: bold;
     position: absolute;
-    margin-left: 47%;
-    margin-right: 47%;
     text-align: center;
     background: #fff700;
     padding: 5px;
     border: 1px solid black;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%, -50%);
 }
+
 
 @keyframes pipe-animation {
     from{
@@ -110,4 +112,28 @@ body{
         right: 100%;
     }
 
+}
+
+@media(min-width: 320px) and (max-width: 550px){
+    @keyframes jump {
+        0%{
+            bottom: 0;
+        }
+        37%{
+            bottom: 250px;
+        }
+        50%{
+            bottom: 250px;
+        }
+        63%{
+            bottom: 250px;
+        } 
+        100%{
+            bottom: 0;
+        }
+    }
+
+    .jump{
+        animation: jump 900ms ease-out;
+    }
 }
