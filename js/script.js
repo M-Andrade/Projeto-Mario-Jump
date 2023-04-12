@@ -25,7 +25,7 @@ function playDied() {
 }
 
 let time = 1500;
-let valorAtual = 00000;
+let valorAtual = 0;
 
 const jump = () => {
     if(morto){
