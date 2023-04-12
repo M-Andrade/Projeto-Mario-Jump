@@ -71,7 +71,7 @@ const loop = setInterval(() => {
 const loopTime = setInterval(() => {
     time -= 25;
     if(time <= 600){
-        time = 600
+        time = 350
     }
 }, 1000)
 
@@ -102,5 +102,6 @@ meuBotao.addEventListener("click", function() {
     location.reload();
 });
 
+/*const jogo = setInterval(() => {*/
 document.addEventListener('keydown', jump);
 document.addEventListener('touchstart', jump);
