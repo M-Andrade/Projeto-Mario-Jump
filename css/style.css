@@ -16,36 +16,11 @@ body{
     position: relative;
     overflow: hidden;
     background-color: #0b88ff;
-    background-image: url(images/fundo1.jpg);
+    background-image: url(/images/fundo.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: bottom;
-}
-.score-board{
-    position: absolute;
-    left: 50%;
-    top: 25vh;
-    transform: translate(-50%, -50%);
-    text-align: left;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 20px;
-    font-weight: bold;
-    background: rgba(0, 255, 0, 0.5);
-    padding: 5px;
-}
-#pontos-envio{
-    display: inline-block;
-    margin-left: 0px;
-}
-.btn-submit{
-    position: absolute;
-    right: 4px;
-    background-color: yellow;
-    padding: 3px;
-    outline: none;
-    border: none;
-    font-size: 14px;
 }
 
 .pipe{
