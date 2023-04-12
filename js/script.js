@@ -5,15 +5,18 @@ const gameOver = document.querySelector('.game-over');
 const star = document.querySelector('.star');
 
 const elemento = document.getElementById("id-pipe");
+const points = document.getElementById("pontos");
 const telaLargura = window.innerWidth;
 
 let time = 1500;
+let valorAtual = 00000;
 
 const jump = () => {
     mario.classList.add('jump');
 
     setTimeout(() => {
         mario.classList.remove('jump')
+        valorAtual += 3;
     }, 600);
 }
 
@@ -40,12 +43,18 @@ const loop = setInterval(() => {
 
         clearInterval(loop);
         clearInterval(loopDif);
+        clearInterval(loopTime);
     }
 }, 10)
 
 const loopTime = setInterval(() => {
     time -= 20;
 }, 1000)
+
+const loopPoints = setInterval(() => {
+    valorAtual += 1;
+    points.innerHTML = valorAtual;
+}, 500)
 
 function atingiuBordaDireita() {
     return (elemento.offsetLeft + elemento.offsetWidth) >= telaLargura;
